@@ -44,10 +44,15 @@ define([
         }
 
 
-
-        this.getSurvayList = function (cb) {
+        this.getAvaliableSurveys = function (cb) {
             request({
                 url : baseUrl + '/surveys'
+            }, cb);
+        };
+
+        this.getSurveyDetails = function (id, cb) {
+            request({
+                url : baseUrl + '/surveys/' + id
             }, cb);
         };
     }

@@ -1,11 +1,16 @@
-define(['knockout', 'jquery' , './viewModel', './dataAccess'], function (ko, $, ViewModel, DataAccess) {
+define(['knockout', 'jquery' , './dataAccess', './surveys/viewModel'], function (ko, $, DataAccess, ViewModel) {
     "use strict";
 
     function ChallageApp() {
 
         this.appName = ko.observable('Challenge App 001');
 
-        this.viewModel = new ViewModel();
+        this.dal = new DataAccess();
+
+        this.viewModel = new ViewModel(this.dal);
+
+        //
+        this.surveys = this.viewModel.model.avaliableSurveys;
     }
 
 

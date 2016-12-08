@@ -1,0 +1,19 @@
+{
+  "name": "challangeApp",
+  "version": "1.0.0",
+  "description": "Challange 001 App",
+  "scripts": {
+    "starts": "webpack-dev-server -d ./src/app.js"
+  },
+  "author": "Sarath Saleem",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "knockout": "^3.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
