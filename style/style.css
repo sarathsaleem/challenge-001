@@ -1,5 +1,71 @@
-/* https://dribbble.com/shots/2165050-Swiss-style-dark-white-dashboard */
 body {
     font-family: 'Open Sans', sans-serif;
     color: #7F7F7F;
+}
+.content {
+    display: none;
+}
+.content.currentView {
+    display: block;
+    position: relative;
+}
+.surveysList {} .surveys {
+    list-style: decimal;
+    max-width: 500px;
+}
+.surveys li {
+    padding: 15px;
+    margin: 10px 0;
+    background: #f7f7f7;
+    background: #f7f7f7 url('../images/forward.svg') no-repeat 100% 50%;
+    color: #00047b;
+    cursor: pointer;
+    border: 1px solid #e0faff;
+}
+h1 {
+    padding: 20px;
+    background: #006275;
+    color: #fff;
+}
+.backBtn {
+    position: absolute;
+    top: 15px;
+    left: -50px;
+    background-image: url(../images/back.svg);
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+.questions {
+    list-style: decimal;
+}
+.questions li {
+    padding: 15px;
+    margin: 10px 0;
+    background: #f7f7f7;
+}
+.questions li.error {
+    border: 1px solid #fbb8b8;
+}
+.questions li select {
+    width: 33%;
+}
+.submitBtn {
+    padding: 5px 40px;
+    background: #006275;
+    color: #fff;
+    margin: 0 0 50px 0;
+    border: 0px;
+}
+
+.sucessScreen {
+    text-align: center;
+    padding: 40px;
+}
+.sucessScreen button {
+    padding: 5px 40px;
+    background: #006275;
+    color: #fff;
+    margin: 0 0 50px 0;
+    border: 0px;
 }

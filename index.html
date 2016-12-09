@@ -10,15 +10,51 @@
     <link rel="stylesheet" href="style/style.css" />
     <script src="bundle.js"></script>
 </head>
+
 <body>
     <div class="container">
-        <h1>Available surveys</h1>
-        <ul class="surveys">
-            <!-- ko foreach: surveys -->
-            <li data-bind="text : $data.title , attr : { surveyid : $data.id  }, click : $parent.getSurveyDetails"></li>
+
+        <div class="content surveysList" data-bind="css : { currentView : !surveysView.inQuestionScreen() }">
+            <h1>Available surveys</h1>
+            <ul class="surveys">
+                <!-- ko foreach: surveysView.surveys -->
+                <li data-bind="text : $data.title , attr : { surveyid : $data.id  }, click : $parent.surveysView.getSurveyDetails"></li>
+                <!--/ko-->
+            </ul>
+        </div>
+
+        <div class="content questions" data-bind="css : { currentView : surveysView.inQuestionScreen() }">
+
+            <div class="backBtn" data-bind="click : surveysView.setSurveysView"></div>
+            <h1 data-bind="text : surveysView.currentSurvey.title"></h1>
+            <!-- ko if: !(surveysView.inSuccessScreen()) -->
+            <p data-bind="text : surveysView.currentSurvey.tagline"></p>
+            <ul class="questions">
+                <!-- ko foreach:  surveysView.currentSurvey.questions -->
+                <li data-bind="css : { error : validationError }">
+                    <label data-bind="text : $data.title"></label>
+                    </br>
+                    <select data-bind="options: $data.options, value : $data.value, optionsCaption: 'Choose...'"></select>
+                </li>
+                <!--/ko-->
+            </ul>
+            <div class="validate">
+                <label>Validate</label>
+                <input type="checkbox" data-bind="checked : surveysView.validate" />
+            </div>
+            <button class="submitBtn" data-bind="click : surveysView.currentSurvey.submit">Submit</button>
+
             <!--/ko-->
-        </ul>
+
+            <!-- ko if: surveysView.inSuccessScreen() -->
+            <div class="sucessScreen">
+                <p>Your answers summitted successfully!</p>
+                <button data-bind="click:surveysView.setSurveysView">Back to surveys</button>
+            </div>
+            <!--/ko-->
+        </div>
 
     </div>
 </body>
+
 </html>

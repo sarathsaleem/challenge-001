@@ -1,4 +1,4 @@
-define(['knockout', 'jquery' , './dataAccess', './surveys/viewModel'], function (ko, $, DataAccess, ViewModel) {
+define(['knockout', 'jquery' , './dataAccess', './surveys/viewModel'], function (ko, $, DataAccess, Surveys) {
     "use strict";
 
     function ChallageApp() {
@@ -7,17 +7,15 @@ define(['knockout', 'jquery' , './dataAccess', './surveys/viewModel'], function 
 
         this.dal = new DataAccess();
 
-        this.viewModel = new ViewModel(this.dal);
-
-        //
-        this.surveys = this.viewModel.model.avaliableSurveys;
+        this.surveysView = new Surveys(this.dal);
+        this.surveysView.load();
     }
 
 
     var Challenge_001 = new ChallageApp();
 
     $(function () {
-        ko.applyBindings(Challenge_001.viewModel);
+        ko.applyBindings(Challenge_001);
     });
 
 });

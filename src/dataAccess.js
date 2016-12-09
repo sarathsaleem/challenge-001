@@ -55,6 +55,15 @@ define([
                 url : baseUrl + '/surveys/' + id
             }, cb);
         };
+
+        this.submitCurrentSurvey = function (id, data, cb) {
+            request({
+                method : 'POST',
+                url : baseUrl + '/surveys/' + id + '/completions',
+                data : data
+            }, cb);
+        };
+
     }
 
     return DAL;
