@@ -17,6 +17,9 @@ define([
         this.inQuestionScreen = ko.observable(false);
         this.inSuccessScreen = ko.observable(false);
 
+        /*
+         * Switch screen
+         */
         this.setSurveysView = function() {
             that.inQuestionScreen(false);
             that.inSuccessScreen(false);
@@ -49,13 +52,17 @@ define([
             });
         };
 
+        this.showSuccessScreen = function() {
+            that.inSuccessScreen(true);
+        };
+
+        /*
+         * Initial load , calling from application
+         */
         this.load = function() {
             this.model.getAvaliableSurveys();
         };
 
-        this.showSuccessScreen = function () {
-             that.inSuccessScreen(true);
-        };
 
     }
 
@@ -77,7 +84,11 @@ define([
         this.currentSurvey.questions(data.survey.questions);
     };
 
-
+    /*
+     *
+     * Get current selected data and set validation
+     *
+     */
     SurveysViewModel.prototype.getCurrentAnswers = function() {
         var answers = {
             "completion": []
@@ -101,7 +112,7 @@ define([
         return {
             id: this.currentSurvey.id(),
             answers: answers,
-            error : vaildationError
+            error: vaildationError
         };
     };
 

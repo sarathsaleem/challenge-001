@@ -5,11 +5,11 @@ define([
     '../config.js'
 ], function ($, ko, config) {
     /**
-     * This is the Data Access Layer for communicating with the backend.
+     * This is the Data Access Layer for communicating with the backend API.
      */
     function DAL() {
 
-        var baseUrl = config.api.mokserver;
+        var baseUrl = config.api.mockserver;
 
 
         function request(options, cb) {
