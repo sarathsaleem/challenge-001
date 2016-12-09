@@ -8,10 +8,8 @@
   "author": "Sarath Saleem",
   "license": "UNLICENSED",
   "dependencies": {
-    "bootstrap": "^3.3.7",
     "jquery": "^3.1.0",
-    "knockout": "^3.4.0",
-    "pagerjs": "^1.0.0"
+    "knockout": "^3.4.0"
   },
   "devDependencies": {
     "webpack": "^1.13.1",
