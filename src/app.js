@@ -1,7 +1,7 @@
 define(['knockout', 'jquery', './dataAccess', './surveys/viewModel'], function(ko, $, DataAccess, Surveys) {
     "use strict";
 
-    function ChallageApp() {
+    function ChallengeApp() {
 
         this.appName = ko.observable('Challenge App 001');
 
@@ -16,7 +16,7 @@ define(['knockout', 'jquery', './dataAccess', './surveys/viewModel'], function(k
     }
 
 
-    var Challenge_001 = new ChallageApp();
+    var Challenge_001 = new ChallengeApp();
 
     $(function() {
         ko.applyBindings(Challenge_001);

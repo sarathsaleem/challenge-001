@@ -17,6 +17,8 @@ define([
         this.inQuestionScreen = ko.observable(false);
         this.inSuccessScreen = ko.observable(false);
 
+        this.validate = ko.observable(true); // boolean to check validation is need or not
+
         /*
          * Switch screen
          */
@@ -26,21 +28,23 @@ define([
             that.validate(true);
         };
 
-        this.validate = ko.observable(true);
 
+        /*
+         *
+         * Set current survey object
+         *
+         */
         this.currentSurvey = {
             id: ko.observable(''),
             title: ko.observable(''),
             tagline: ko.observable(''),
             questions: ko.observableArray([]),
             submit: function() {
-                var currentSurveydata = that.getCurrentAnswers();
-
-                if (currentSurveydata.error && that.validate()) {
+                var currentSurveyData = that.getCurrentAnswers();
+                if (currentSurveyData.error && that.validate()) {
                     return;
                 }
-
-                that.model.submitCurrentSurvey(currentSurveydata.id, currentSurveydata.answers, that.showSuccessScreen);
+                that.model.submitCurrentSurvey(currentSurveyData.id, currentSurveyData.answers, that.showSuccessScreen);
 
             }
         };
@@ -66,7 +70,12 @@ define([
 
     }
 
-
+    /*
+     *
+     * Create question model from data
+     * Add data of current survey to observables
+     *
+     */
     SurveysViewModel.prototype.setCurrentSurvey = function(data) {
         var questions = data.questions.map(function(question) {
             question = new QuestionsModel(question);

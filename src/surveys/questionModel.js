@@ -9,18 +9,22 @@ define([
         //validate data if any
 
         var value = ko.observable();
-        var validationError = ko.observable(false);
+        var validationError = ko.observable(false); // indicate the border color for the question box
 
-        value.subscribe(function(){
+        value.subscribe(function() {
             validationError(false);
         });
 
+        /*
+         * return data object with value and validation
+         */
+
         return {
-            id : data.id,
-            title : data.title,
-            options : data.options,
-            value : value,
-            validationError : validationError
+            id: data.id,
+            title: data.title,
+            options: data.options,
+            value: value,
+            validationError: validationError
 
         };
 
