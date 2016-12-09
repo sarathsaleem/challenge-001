@@ -1,14 +1,15 @@
 /* global CONFIG*/
 define([
     'jquery',
-    'knockout'
-], function ($, ko) {
+    'knockout',
+    '../config.js'
+], function ($, ko, config) {
     /**
      * This is the Data Access Layer for communicating with the backend.
      */
     function DAL() {
 
-        var baseUrl = 'https://private-anon-7a0a80fddc-surveysmock.apiary-mock.com/api';
+        var baseUrl = config.api.mokserver;
 
 
         function request(options, cb) {
